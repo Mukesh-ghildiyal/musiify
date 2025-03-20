@@ -1,4 +1,5 @@
 // import { AuthenticatedRequest } from "./middleware.js";
+import { AuthenticatedRequest } from "./middleware.js";
 import { User } from "./model.js";
 import TryCatch from "./TryCatch.js";
 import bcrypt from "bcrypt";
@@ -67,3 +68,14 @@ export const loginUser = TryCatch(async (req, res) => {
     token,
   });
 });
+
+
+export const myProfile= TryCatch(async(req:AuthenticatedRequest,res)=>{
+  const user = req.user;
+  res.json(user)
+})
+
+
+// export const addToPlaylist = TryCatch(async(req:AuthenicatedRequest,res)=>{
+//   const userId = req.user?._id
+// })
